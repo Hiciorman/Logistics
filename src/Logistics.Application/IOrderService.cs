@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Logistics.Domain;
+﻿using System.Collections.Generic;
+using Logistics.Common;
+using Logistics.Domain.Model.Order;
 
 namespace Logistics.Application
 {
-    public interface IOrderService
+    public interface IOrderService : IGenericService<Order>
     {
-        IList<Order> GetAllOrders();
         IList<Order> GetOrdersWithStatus(StatusType status);
-
-        void CreateNewOrder(Order order);
-        void UpdateOrder(Order order);
-        void DeleteOrder(Guid order);
     }
 }

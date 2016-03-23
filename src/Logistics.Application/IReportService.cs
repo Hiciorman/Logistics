@@ -1,11 +1,11 @@
 ﻿using System;
-using Logistics.Domain;
+using Logistics.Common;
+using Logistics.Domain.Model.Courier;
+using Logistics.Domain.Model.Report;
 
 namespace Logistics.Application
 {
-    public interface IReportService
+    public interface IReportService : IGenericService<Report>
     {
-        Report CreateNewReport(DateTime start, DateTime end);
-        Report CreateNewReport(DateTime start, DateTime end, Courier courier);
     }
 }

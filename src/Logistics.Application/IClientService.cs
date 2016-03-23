@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Logistics.Domain;
+﻿using Logistics.Common;
+using Logistics.Domain.Model.Client;
 
 namespace Logistics.Application
 {
-    public interface IClientService
+    public interface IClientService : IGenericService<Client>
     {
-        IList<Client> GetAllClients();
     }
 }

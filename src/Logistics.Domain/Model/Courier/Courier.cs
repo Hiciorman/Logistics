@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logistics.Domain
+namespace Logistics.Domain.Model.Courier
 {
     public class Courier //entity
     {
@@ -8,6 +8,5 @@ namespace Logistics.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public Address Address { get; set; }
     }
 }

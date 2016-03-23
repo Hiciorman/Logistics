@@ -1,4 +1,4 @@
-﻿namespace Logistics.Domain
+﻿namespace Logistics.Domain.Model.Order
 {
     public enum StatusType
     {

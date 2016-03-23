@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Logistics.Domain
+namespace Logistics.Domain.Model.Report
 {
     public class Report //entity
     {

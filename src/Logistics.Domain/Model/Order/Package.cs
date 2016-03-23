@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logistics.Domain
+namespace Logistics.Domain.Model.Order
 {
     public class Package //value object
     {
@@ -11,5 +11,6 @@ namespace Logistics.Domain
         public float Weight { get; set; }
         public float Heght { get; set; }
         public float Width { get; set; }
+        public bool IsFragile { get; set; }
     }
 }

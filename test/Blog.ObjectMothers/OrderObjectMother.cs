@@ -1,6 +1,5 @@
 ﻿using Logistics.Domain.Model.Client;
 using Logistics.Domain.Model.Order;
-using System;
 
 namespace Blog.ObjectMothers
 {
@@ -10,7 +9,6 @@ namespace Blog.ObjectMothers
         {
             var o = new Order
             {
-                Number = new Guid(),
                 Package = new Package(),
                 Sender = new Client(),
                 Recipent = new Client(),
@@ -26,7 +24,6 @@ namespace Blog.ObjectMothers
         {
             var o = new Order
             {
-                Number = new Guid(),
                 Package = new Package(),
                 Sender = new Client(),
                 Recipent = new Client(),

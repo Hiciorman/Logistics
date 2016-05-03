@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace Logistics.Domain.Model.Client
+﻿namespace Logistics.Domain.Model.Client
 {
-    public class Client //entity
+    public class Client : GuidEntity
     {
-        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }

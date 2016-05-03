@@ -49,9 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="IntEntity.cs" />
     <Compile Include="Model\Client\Address.cs" />
     <Compile Include="Model\Client\Client.cs" />
     <Compile Include="Model\Courier\Courier.cs" />
+    <Compile Include="GuidEntity.cs" />
     <Compile Include="Model\Order\Order.cs" />
     <Compile Include="Model\Order\Package.cs" />
     <Compile Include="Model\Order\PaymentType.cs" />
@@ -62,6 +66,7 @@
     <Compile Include="Repositories\ICourierRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IReportRepository.cs" />
+    <Compile Include="Seed\AppContextSeedInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,7 +1,12 @@
 ﻿namespace Logistics.Domain.Model.Client
 {
-    public class Address //value object
+    public class Address
     {
+        public Address()
+        {
+            
+        }
+
         public Address(string street, string city, string region, string country, string postalCode)
         {
             Street = street;

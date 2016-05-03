@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace Logistics.Domain.Model.Order
+﻿namespace Logistics.Domain.Model.Order
 {
-    public class Order //entity
+    public class Order : GuidEntity
     {
-        public Guid Number { get; set; }
         public Client.Client Sender { get; set; }
         public Client.Client Recipent { get; set; }
         public Package Package { get; set; }

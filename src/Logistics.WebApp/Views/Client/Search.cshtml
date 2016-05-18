@@ -1,0 +1,13 @@
+﻿@model Logistics.WebApp.Models.Client.SearchViewModel
+@{
+    ViewBag.Title = "Search";
+}
+
+@using (Html.BeginForm("Search", "Client", null, FormMethod.Post, new { @class = "form-center" }))
+{
+    <h2>Search package</h2>
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.OrderNumber, new { @class = "form-control", placeholder = "Order number" })
+    </div>
+    <input type="submit" value="Search" class="btn btn-lg btn-primary btn-block"/>
+}

@@ -1,0 +1,58 @@
+﻿@model Logistics.WebApp.Models.Courier.OrdersViewModel
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+<div class="form-group input-group-lg">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>From:</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>To:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.FromDateTime, "{0:dd-MM-yyyy}", new { @class = "form-control datepicker" })
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.ToDateTime, "{0:dd-MM-yyyy}", new { @class = "form-control datepicker" })
+        </div>
+        <div class="col-md-2">
+            <button type="button" name="searchButton" onclick="changeButtonClicked()" class="btn btn-primary btn-block">Search</button>
+        </div>
+    </div>
+</div>
+
+<div id="Orders">
+    @{ Html.RenderPartial("_OrdersPartial", Model); }
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy'
+        });
+    });
+
+    function changeButtonClicked() {
+        var fromDateTime = $("#FromDateTime").val();
+        var toDateTime = $("#ToDateTime").val();
+
+        $("#Orders").load('@(Url.Action("GetOrders","Courier",null, Request.Url?.Scheme))?fromDateTime=' + fromDateTime + '&toDateTime=' + toDateTime);
+
+    }
+
+    function acceptButtonClicked() {
+        var strSelected = "";
+        $("#Status option:selected").each(function () {
+            strSelected += $(this)[0].value;
+        });
+
+        $("#Orders").load('@(Url.Action("ChangeStatus","Courier",null, Request.Url?.Scheme))?strSelected=' + strSelected);
+    }
+</script>

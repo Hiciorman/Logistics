@@ -1,4 +1,7 @@
-﻿namespace Logistics.Domain.Model.Client
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Logistics.Domain.Model.Client
 {
     public class Address
     {
@@ -16,10 +19,30 @@
             PostalCode = postalCode;
         }
 
+
+        [Required]
+        [Column("Street")]
+        [MaxLength(100)]
         public string Street { get; private set; }
-        public string City { get; private set; }
-        public string Region { get; private set; }
-        public string Country { get; private set; }
+
+        [Required]
+        [Column("PostalCode")]
+        [MaxLength(10)]
         public string PostalCode { get; private set; }
+
+        [Required]
+        [Column("City")]
+        [MaxLength(100)]
+        public string City { get; private set; }
+
+        [Required]
+        [Column("Region")]
+        [MaxLength(100)]
+        public string Region { get; private set; }
+
+        [Required]
+        [Column("Country")]
+        [MaxLength(100)]
+        public string Country { get; private set; }
     }
 }

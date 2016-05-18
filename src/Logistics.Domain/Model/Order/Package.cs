@@ -1,16 +1,22 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Logistics.Domain.Model.Order
 {
     public class Package
     {
-        public DateTime? DateOfPacking { get; set; }
-        public DateTime? DateOfMarking { get; set; }
-        public DateTime? DateOfDispatch { get; set; }
-        public DateTime? DateOfDelivery { get; set; }
+        [Required]
+        [Column("Weight")]
         public float Weight { get; set; }
+
+        [Column("Height")]
         public float Height { get; set; }
+
+        [Column("Width")]
         public float Width { get; set; }
+
+        [Required]
+        [Column("IsFragile")]
         public bool IsFragile { get; set; }
     }
 }

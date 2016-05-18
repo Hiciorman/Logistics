@@ -20,9 +20,19 @@ namespace Logistics.Application
             return _reportRepository.Insert(obj);
         }
 
+        public bool Update(Report obj)
+        {
+            return _reportRepository.Update(obj);
+        }
+
         public bool Delete(Guid id)
         {
             return _reportRepository.Delete(id);
+        }
+
+        public void Save()
+        {
+            _reportRepository.Save();
         }
 
         public Report GetById(Guid id)

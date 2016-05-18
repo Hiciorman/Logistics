@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Logistics.Common;
 
 namespace Logistics.Domain.Model.Report
 {
-    public class Report //entity
+    [Table("Reports")]
+    public class Report : Entity
     {
-        public Guid Id { get; set; }
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; } 
     }

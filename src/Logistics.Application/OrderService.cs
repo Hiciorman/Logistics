@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Logistics.Domain.Model.Log;
 using Logistics.Domain.Model.Order;
 using Logistics.Domain.Repositories;
 
@@ -22,14 +23,34 @@ namespace Logistics.Application
                 .ToList();
         }
 
+        public IList<Log> GetLogs(Guid id)
+        {
+            return _orderRepository.GetLogs(id).ToList();
+        }
+
+        public IList<Order> GetByDate(DateTime fromDateTime, DateTime toDateTime)
+        {
+            return _orderRepository.GetByDate(fromDateTime, toDateTime).ToList();
+        }
+
         public Order Insert(Order obj)
         {
             return _orderRepository.Insert(obj);
         }
 
+        public bool Update(Order obj)
+        {
+            return _orderRepository.Update(obj);
+        }
+
         public bool Delete(Guid id)
         {
             return _orderRepository.Delete(id);
+        }
+
+        public void Save()
+        {
+            _orderRepository.Save();
         }
 
         public Order GetById(Guid id)

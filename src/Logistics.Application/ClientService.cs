@@ -20,9 +20,19 @@ namespace Logistics.Application
             return _clientRepository.Insert(obj);
         }
 
+        public bool Update(Client obj)
+        {
+            return _clientRepository.Update(obj);
+        }
+
         public bool Delete(Guid id)
         {
             return _clientRepository.Delete(id);
+        }
+
+        public void Save()
+        {
+            _clientRepository.Save();
         }
 
         public Client GetById(Guid id)

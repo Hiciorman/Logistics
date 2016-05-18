@@ -1,12 +1,30 @@
-﻿namespace Logistics.Domain.Model.Order
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Logistics.Common;
+
+namespace Logistics.Domain.Model.Order
 {
-    public class Order : GuidEntity
+    public class Order : Entity
     {
+        public Order()
+        {
+            Logs = new HashSet<Log.Log>();
+        }
+
+        [Required]
         public Client.Client Sender { get; set; }
+
+        [Required]
         public Client.Client Recipent { get; set; }
-        public Package Package { get; set; }
+
+        public virtual Package Package { get; set; }
+
         public float Value { get; set; }
+
         public StatusType Status { get; set; }
+
         public PaymentType Payment { get; set; }
+
+        public virtual ICollection<Log.Log> Logs { get; set; }
     }
 }

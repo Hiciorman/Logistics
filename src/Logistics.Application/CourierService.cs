@@ -20,9 +20,19 @@ namespace Logistics.Application
             return _courierRepository.Insert(obj);
         }
 
+        public bool Update(Courier obj)
+        {
+            return _courierRepository.Update(obj);
+        }
+
         public bool Delete(Guid id)
         {
             return _courierRepository.Delete(id);
+        }
+
+        public void Save()
+        {
+            _courierRepository.Save();
         }
 
         public Courier GetById(Guid id)

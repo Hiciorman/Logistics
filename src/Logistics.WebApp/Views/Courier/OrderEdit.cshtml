@@ -1,0 +1,14 @@
+﻿@model Logistics.WebApp.Models.Courier.OrderEditViewModel
+@{
+    ViewBag.Title = "Edit Order";
+}
+
+@using (Html.BeginForm("OrderEdit", "Courier", null, FormMethod.Post, new { @class = "form-center" }))
+{
+    @Html.HiddenFor(x=> x.Order.Id)
+    <h2>Edit order</h2>
+    <div class="form-group">
+        @Html.EnumDropDownListFor(x=> x.StatusTypes, "Select status", new {@class = "form-control"})
+    </div>
+    <input type="submit" value="Edit" class="btn btn-lg btn-primary btn-block margin-top-10px" />
+}

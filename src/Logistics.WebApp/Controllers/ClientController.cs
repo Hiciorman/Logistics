@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Logistics.Application;
 using Logistics.Domain.Model.Order;
@@ -25,14 +26,16 @@ namespace Logistics.WebApp.Controllers
         [HttpPost]
         public ActionResult Search(SearchViewModel model)
         {
+            var result = new SearchResultViewModel();
 
-            var xx =_orderService.GetOrdersWithStatus(StatusType.Dispatched).Single();
-
-            var result = new SearchResultViewModel
+            if (model.OrderId != Guid.Empty)
             {
-                Number = xx.Id,
-                Logs = xx.Logs.ToList()
-            };
+
+                var xx = _orderService.GetById(model.OrderId);
+
+                result.Number = xx.Id;
+                result.Logs = xx.Logs.ToList();
+            }
 
             return View("SearchResult", result);
         }

@@ -1,3 +1,15 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["Action"].ToString();
+
+    //TODO: Find better way to show proper layout
+    if (controller == "Admin" && action != "Login")
+    {
+
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

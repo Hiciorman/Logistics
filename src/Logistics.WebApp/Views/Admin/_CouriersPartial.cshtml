@@ -1,0 +1,29 @@
+﻿@model Logistics.WebApp.Models.Admin.CouriersViewModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Couriers.Any())
+        {
+            foreach (var courier in Model.Couriers)
+            {
+                <tr>
+                    <td>@courier.Id</td>
+                    <td>@courier.FirstName @courier.LastName</td>
+                    <td>@courier.PhoneNumber</td>
+                    <td>
+                        @Html.ActionLink("Edit", "ClientEdit", "Admin", new { area = "", orderId = courier.Id }, new { @class = "btn btn-primary btn-block" })
+                        @Html.ActionLink("Delete", "ClientDelete", "Admin", new { area = "", orderId = courier.Id }, new { @class = "btn btn-primary btn-block" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

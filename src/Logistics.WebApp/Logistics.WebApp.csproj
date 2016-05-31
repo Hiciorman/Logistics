@@ -143,16 +143,20 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CourierController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\ClientsViewModel.cs" />
+    <Compile Include="Models\Admin\CouriersViewModel.cs" />
     <Compile Include="Models\Client\SearchResultViewModel.cs" />
     <Compile Include="Models\Client\SearchViewModel.cs" />
-    <Compile Include="Models\Courier\LoginViewModel.cs" />
-    <Compile Include="Models\Courier\OrdersViewModel.cs" />
+    <Compile Include="Models\Shared\LoginViewModel.cs" />
+    <Compile Include="Models\Courier\OrderEditViewModel.cs" />
+    <Compile Include="Models\Shared\OrdersViewModel.cs" />
     <Compile Include="Models\Courier\ReportViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Courier\_OrdersPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Courier\OrderEdit.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\Clients.cshtml" />
+    <Content Include="Views\Admin\Couriers.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
+    <Content Include="Views\Admin\_OrdersPartial.cshtml" />
+    <Content Include="Views\Admin\_ClientsPartial.cshtml" />
+    <Content Include="Views\Admin\_CouriersPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\OrderEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

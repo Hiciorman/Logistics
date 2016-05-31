@@ -1,0 +1,33 @@
+﻿@model Logistics.WebApp.Models.Admin.ClientsViewModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Clients.Any())
+        {
+            foreach (var client in Model.Clients)
+            {
+                <tr>
+                    <td>@client.Id</td>
+                    <td>@client.FirstName @client.LastName</td>
+                    <td>@client.PhoneNumber</td>
+                    <td>@client.Email</td>
+                    <td>@client.Address.Street @client.Address.City</td>
+                    <td>
+                        @Html.ActionLink("Edit", "ClientEdit", "Admin", new { area = "", orderId = client.Id }, new { @class = "btn btn-primary btn-block" })
+                        @Html.ActionLink("Delete", "ClientDelete", "Admin", new { area = "", orderId = client.Id }, new { @class = "btn btn-primary btn-block" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿@model Logistics.WebApp.Models.Admin.ClientsViewModel
+@{
+    ViewBag.Title = "Clients";
+}
+
+<h2>Clients</h2>
+
+<div id="Clients">
+    @{ Html.RenderPartial("_ClientsPartial", Model); }
+</div>
+
+
+<script type="text/javascript">
+    function changeButtonClicked() {
+        var fromDateTime = $("#FromDateTime").val();
+        var toDateTime = $("#ToDateTime").val();
+
+        $("#Orders").load('@(Url.Action("GetOrders","Courier",null, Request.Url?.Scheme))?fromDateTime=' + fromDateTime + '&toDateTime=' + toDateTime);
+
+    }
+</script>
+

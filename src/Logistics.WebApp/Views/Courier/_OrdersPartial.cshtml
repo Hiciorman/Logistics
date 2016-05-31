@@ -1,13 +1,17 @@
-﻿@using Logistics.Domain.Model.Order
-@model Logistics.WebApp.Models.Courier.OrdersViewModel
+﻿@model Logistics.WebApp.Models.Shared.OrdersViewModel
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Number</th>
             <th>Location</th>
+            <th>Value</th>
             <th>Weight</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Is Fragile?</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -18,37 +22,15 @@
                 <tr>
                     <td>@order.Id</td>
                     <td>@order.Recipent.Address.Street @order.Recipent.Address.City</td>
+                    <td>@order.Value</td>
                     <td>@order.Package.Weight</td>
-                    <td>
-                        @order.Status
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
-                    </td>
+                    <td>@order.Package.Height</td>
+                    <td>@order.Package.Width</td>
+                    <td>@order.Package.IsFragile</td>
+                    <td>@order.Status</td>
+                    <td>@Html.ActionLink("Edit", "OrderEdit", "Courier", new { area = "", orderId = order.Id }, new { @class = "btn btn-primary btn-block" })</td>
                 </tr>
             }
         }
     </tbody>
 </table>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit order status</h4>
-            </div>
-            <div class="modal-body">
-               @Html.DropDownList("MyType", EnumHelper.GetSelectList(typeof(StatusType)), "Select status", new { @class = "form-control" })
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" onclick="acceptButtonClicked()" class="btn btn-default" data-dismiss="modal">Accept</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-
- 
-</script>

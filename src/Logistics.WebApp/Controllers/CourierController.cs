@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using Logistics.Application;
 using Logistics.WebApp.Models.Courier;
+using Logistics.WebApp.Models.Shared;
 
 namespace Logistics.WebApp.Controllers
 {
@@ -23,6 +22,7 @@ namespace Logistics.WebApp.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
@@ -56,16 +56,28 @@ namespace Logistics.WebApp.Controllers
             return PartialView("_OrdersPartial", m);
         }
 
-        [HttpPost]
-        public ActionResult ChangeStatus(string strSelected)
+        [HttpGet]
+        public ActionResult OrderEdit(Guid orderId)
         {
-            return RedirectToAction("Orders");
+            var model = new OrderEditViewModel
+            {
+                Order = _orderService.GetById(orderId)
+            };
+
+            return View(model);
         }
 
-        //[HttpGet]
-        //public ActionResult Report(ReportViewModel model)
-        //{
+        [HttpPost]
+        public ActionResult OrderEdit(OrderEditViewModel model)
+        {
+            if (model.StatusTypes != null)
+            {
+                var order = _orderService.GetById(model.Order.Id);
+                order.Status = model.StatusTypes.Value;
 
-        //}
+                _orderService.Update(order);
+            }
+            return RedirectToAction("Orders");
+        }
     }
 }

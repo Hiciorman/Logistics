@@ -1,4 +1,4 @@
-﻿namespace Logistics.WebApp.Models.Courier
+﻿namespace Logistics.WebApp.Models.Shared
 {
     public class LoginViewModel
     {

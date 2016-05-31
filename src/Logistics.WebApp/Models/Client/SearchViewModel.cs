@@ -1,7 +1,9 @@
-﻿namespace Logistics.WebApp.Models.Client
+﻿using System;
+
+namespace Logistics.WebApp.Models.Client
 {
     public class SearchViewModel
     {
-        public string OrderNumber { get; set; }
+        public Guid OrderId { get; set; }
     }
 }

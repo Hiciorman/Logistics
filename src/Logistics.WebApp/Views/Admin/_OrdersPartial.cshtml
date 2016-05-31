@@ -1,0 +1,72 @@
+﻿@model Logistics.WebApp.Models.Shared.OrdersViewModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Location</th>
+            <th>Value</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Is Fragile?</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Orders.Any())
+        {
+            foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Recipent.Address.Street @order.Recipent.Address.City</td>
+                    <td>@order.Value</td>
+                    <td>@order.Package.Weight</td>
+                    <td>@order.Package.Height</td>
+                    <td>@order.Package.Width</td>
+                    <td>@order.Package.IsFragile</td>
+                    <td>@order.Status</td>
+                    <td>
+                        @Html.ActionLink("Edit", "OrderEdit", "Admin", new { area = "", orderId = order.Id }, new { @class = "btn btn-primary btn-block" })
+                        <button type="button" class="btn btn-danger btn-block open-dialog" data-toggle="modal" data-target="#myModal" data-orderId="@order.Id">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete order</h4>
+                <div>Are you sure?</div>
+            </div>
+
+            <div class="modal-body">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button id="buttonId" type="button" class="btn btn-danger" data-dismiss="modal" onclick="acceptButtonClicked()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var parameter;
+    $('#myModal').on('show.bs.modal', function (e) {
+        parameter = e.relatedTarget.dataset.orderid;
+        // Do some stuff w/ it.
+    });
+    function acceptButtonClicked() {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("OrderDelete", "Admin")',
+            data: { orderId: parameter },
+        });
+    }
+</script>

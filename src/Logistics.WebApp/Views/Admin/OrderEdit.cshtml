@@ -1,0 +1,81 @@
+﻿@model Logistics.Domain.Model.Order.Order
+@{
+    ViewBag.Title = "Edit Order";
+}
+
+@using (Html.BeginForm("OrderEdit", "Admin", null, FormMethod.Post, new { @class = "form-center-large" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <h2 class="col-md-offset-3">Edit order</h2>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Value)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Value, new { @class = "form-control margin-top-10px", placeholder = "Value" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Payment)
+            </h4>
+        </div>
+        <div class="col-md-4"> 
+            @Html.EnumDropDownListFor(x => x.Payment, "Select payment", new { @class = "form-control margin-top-10px" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Status)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.EnumDropDownListFor(x => x.Status, "Select status", new { @class = "form-control margin-top-10px" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Package.Weight)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Package.Weight, new { @class = "form-control margin-top-10px", placeholder = "Package weight" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Package.Height)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Package.Height, new { @class = "form-control margin-top-10px", placeholder = "Package height" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Package.Width)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Package.Width, new { @class = "form-control margin-top-10px", placeholder = "Package width" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>
+                @Html.DisplayNameFor(model => model.Package.IsFragile)
+            </h4>
+        </div>
+        <div class="col-md-4">
+            @Html.CheckBoxFor(model => model.Package.IsFragile, new { @class = "form-control margin-top-10px", placeholder = "Is fragile?" })
+        </div>
+    </div>
+    <input type="submit" value="Accept" class="btn btn-lg btn-primary btn-block margin-top-10px col-md-offset-3" />
+}

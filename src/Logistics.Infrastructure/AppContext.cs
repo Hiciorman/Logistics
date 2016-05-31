@@ -29,6 +29,12 @@ namespace Logistics.Infrastructure
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Order>()
+                .HasMany<Log>(c => c.Logs)
+                .WithRequired(x => x.Order)
+                .WillCascadeOnDelete(true);
+
         }
     }
 }

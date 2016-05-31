@@ -5,6 +5,6 @@
         Packaging,
         Marking,
         Dispatched,
-        Delvered
+        Delivered
     }
 }

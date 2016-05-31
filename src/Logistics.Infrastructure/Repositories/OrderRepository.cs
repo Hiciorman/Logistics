@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Logistics.Domain;
+using Logistics.Common;
 using Logistics.Domain.Model.Log;
 using Logistics.Domain.Model.Order;
 using Logistics.Domain.Repositories;
@@ -33,6 +33,14 @@ namespace Logistics.Infrastructure.Repositories
                 .Where(o => ordersFromLogs.Contains(o.Id))
                 .Include(o=> o.Sender)
                 .Include(o => o.Recipent);
+        }
+
+        public override Order GetById(Guid id)
+        {
+            return _context.Set<Order>()
+                .Include(x=>x.Recipent)
+                .Include(x => x.Sender)
+                .Single(x => x.Id == id);
         }
 
         public override IEnumerable<Order> GetAll()

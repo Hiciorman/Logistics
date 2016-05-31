@@ -11,10 +11,8 @@ namespace Logistics.Domain.Model.Order
             Logs = new HashSet<Log.Log>();
         }
 
-        [Required]
         public Client.Client Sender { get; set; }
 
-        [Required]
         public Client.Client Recipent { get; set; }
 
         public virtual Package Package { get; set; }

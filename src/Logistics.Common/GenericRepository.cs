@@ -54,7 +54,7 @@ namespace Logistics.Common
             _context.SaveChanges();
         }
 
-        public T GetById(Guid id)
+        public virtual T GetById(Guid id)
         {
             return _context.Set<T>().Single(x => x.Id == id);
         }
